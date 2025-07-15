@@ -1,0 +1,14 @@
+<section *ngIf="joke">
+  <h2>Categoría: {{ joke.category }}</h2>
+
+  <div >
+    <p>{{ joke.joke }}</p>
+  </div>
+
+
+
+  <button (click)="loadJoke()">🔄 Otro chiste</button>
+</section>
+
+<p *ngIf="!joke">Cargando chiste...</p> 
+
