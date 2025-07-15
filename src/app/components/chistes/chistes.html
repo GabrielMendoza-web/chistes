@@ -1,14 +1,35 @@
 <section *ngIf="joke">
-  <h2>Categoría: {{ joke.category }}</h2>
 
-  <div >
-    <p>{{ joke.joke }}</p>
+
+  <div class="jokeDiv">
+    <div *ngIf="joke.type === 'single'">
+      <p class="jokeSingle">{{ joke.joke }}</p>
+    </div>
+
+    <div *ngIf="joke.type === 'twopart'">
+      <p class="jokeOne">{{ joke.setup }}</p>
+      <p class="jokeSecond">{{ joke.delivery }}</p>
+    </div>
   </div>
 
+    <p class="categoria">Categoría: {{ joke.category }}</p>
+  
+ <div class="button-container">
+    <button (click)="loadJoke()">Otro chiste</button>
+  </div>
 
-
-  <button (click)="loadJoke()">🔄 Otro chiste</button>
+  <div class="rating">
+    <span
+      *ngFor="let star of [1, 2, 3, 4, 5]"
+      (click)="setRating(star)"
+      [class.filled]="star <= rating"
+      class="star"
+      role="button"
+      [attr.aria-label]="'Calificar con ' + star + ' estrellas'"
+    >
+      ★
+    </span>
+  </div>
 </section>
 
-<p *ngIf="!joke">Cargando chiste...</p> 
-
+<p *ngIf="!joke">Cargando chiste...</p>

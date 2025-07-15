@@ -13,22 +13,38 @@ import { ChistesService } from '../../services/chistes-service';
 export class Chistes {
   joke: Joke | null = null;
   constructor(private chistesService: ChistesService) {}
+  rating = 0;
 
   ngOnInit(): void {
     this.loadJoke();
+   
   }
 
   loadJoke(): void {
+    this.rating = 0;
     this.joke = null;
     this.chistesService.getRandomJoke().subscribe({
-      next: (joke) => (this.joke = joke),
+      next: (joke) => {
+          console.log('Chiste recibido:', joke),
+        this.joke = joke},
       error: (err) => {
         console.error('Error cargando chiste:', err);
         this.joke = null;
       },
     });
-    console.log(this.joke)
+    
   }
+
+   setRating(value: number): void {
+    this.rating = value;
+    console.log(`Calificaste este chiste con ${value} estrellas`);
+
+    // Aquí podrías llamar a un servicio para guardar la valoración en backend
+  }
+
+
+
+
 }
 
 
