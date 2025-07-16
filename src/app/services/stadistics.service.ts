@@ -10,6 +10,8 @@ export class StadisticsService {
   constructor(private http: HttpClient) {}
 
   getEstadisticas(): Observable<Ranking[]> {
-    return this.http.get<Ranking[]>('https://api.ejemplo.com/datos');
+    return this.http.get<Ranking[]>(
+      'http://localhost:8080/chistes/calificaciones'
+    );
   }
 }
