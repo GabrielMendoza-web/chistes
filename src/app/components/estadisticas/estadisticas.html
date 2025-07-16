@@ -1,1 +1,24 @@
-<p>estadisticas works!</p>
+
+<section class="stadistics-container">
+
+  <div class="list-container">
+      <h1 class="title">Estadisticas</h1>
+
+      <div class="list-item" *ngFor="let item of RankingMockData">
+        <span>{{item.category}}</span>
+        <div>
+        <span
+          *ngFor="let star of [1, 2, 3, 4, 5]"
+          [class.filled]="star <= item.average"
+          class="star"
+          role="button"
+          [attr.aria-label]="'Calificar con ' + star + ' estrellas'"
+        >
+          ★
+        </span>
+
+        </div>
+      </div>
+  </div>
+
+</section>
