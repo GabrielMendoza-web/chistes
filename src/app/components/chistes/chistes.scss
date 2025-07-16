@@ -22,7 +22,11 @@ span:hover {
   text-align: center; /* centra el texto dentro del div */
   margin: 0 auto; /* centra el div horizontalmente */
   max-width: 800px; /* opcional para no hacerlo muy ancho */
-  padding-top: 50px; /* espacio abajo para separar de las estrellas */
+  padding-top: 100px; /* espacio abajo para separar de las estrellas */
+}
+
+.jokeOne {
+  padding-bottom: 40px;
 }
 
 .button-container {

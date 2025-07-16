@@ -11,8 +11,16 @@ export class ChistesService {
 
   constructor(private http: HttpClient) {}
 
+  enviarCalificacion(calificacion: {
+    id: number;
+    category: string;
+    rating: number;
+  }): Observable<any> {
+    const backendUrl = 'http://localhost:8080/chistes/'; 
+    return this.http.post(backendUrl, calificacion);
+  }
+
   getRandomJoke(): Observable<Joke> {
     return this.http.get<Joke>(this.apiUrl);
-    
   }
 }

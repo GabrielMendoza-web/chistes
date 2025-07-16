@@ -1,6 +1,4 @@
 <section *ngIf="joke">
-
-
   <div class="jokeDiv">
     <div *ngIf="joke.type === 'single'">
       <p class="jokeSingle">{{ joke.joke }}</p>
@@ -12,20 +10,23 @@
     </div>
   </div>
 
-    <p class="categoria">Categoría: {{ joke.category }}</p>
-  
- <div class="button-container">
+  <p class="categoria">Categoría: {{ joke.category }}</p>
+
+  <div class="button-container">
     <button (click)="loadJoke()">Otro chiste</button>
   </div>
 
   <div class="rating">
     <span
       *ngFor="let star of [1, 2, 3, 4, 5]"
-      (click)="setRating(star)"
+      (click)="!loadingStar && setRating(star)"
       [class.filled]="star <= rating"
+      [class.disabled]="loadingStar"
       class="star"
       role="button"
       [attr.aria-label]="'Calificar con ' + star + ' estrellas'"
+      [attr.aria-disabled]="loadingStar"
+      [style.pointer-events]="loadingStar ? 'none' : 'auto'"
     >
       ★
     </span>
