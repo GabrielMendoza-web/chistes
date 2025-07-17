@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Joke } from '../models/ChisteModel';
+import { Joke, Translation } from '../models/ChisteModel';
 import { ChistesService } from '../../services/chistes-service';
 
 import { TranslationService } from '../../services/translation-service';
@@ -32,7 +32,18 @@ export class Chistes {
     this.loadingStar = false;
     this.chistesService.getRandomJoke().subscribe({
       next: (joke) => {
-        console.log('Chiste recibido:', joke), (this.joke = joke);
+        console.log("🚀 ~ Chistes ~ this.chistesService.getRandomJoke ~ joke:", joke)
+          this.chistesService.translateText(joke?.type === 'single' ? (joke?.joke || "") + " § " + joke.category
+           : ((joke?.setup || "" ) + "\n" + (joke?.delivery || "") + " § " + joke.category) , "ES").subscribe({
+            next: (data: Translation) => {
+              this.joke = {
+                ...joke,
+                joke: data.translations[0].text.split('§')[0]?.trim(),
+                category: data.translations[0].text.split('§')[1]?.trim()
+              }
+
+            }
+          })
       },
       error: (err) => {
         console.error('Error cargando chiste:', err);
@@ -59,6 +70,7 @@ export class Chistes {
         error: (err) => console.error('Error al enviar la calificación', err),
       });
     }
+    this.loadJoke()
   }
 }
 

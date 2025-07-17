@@ -13,6 +13,14 @@ export class Estadisticas {
   RankingMockData: Ranking[] = RankingMockData;
   RankingData: Ranking[] = [];
 
+  parseFloat(value: any): number {
+    return parseFloat(value);
+  }
+
+  Round(value: any): number {
+    return Math.round(value)
+  }
+
   constructor(private api: StadisticsService) {}
 
   ngOnInit() {

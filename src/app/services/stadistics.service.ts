@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Ranking } from '../models/stadistics';
 import { Observable } from 'rxjs';
@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class StadisticsService {
+
+
   constructor(private http: HttpClient) {}
 
   getEstadisticas(): Observable<Ranking[]> {

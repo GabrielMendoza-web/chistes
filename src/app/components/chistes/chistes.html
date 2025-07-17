@@ -1,12 +1,7 @@
 <section *ngIf="joke">
   <div class="jokeDiv">
-    <div *ngIf="joke.type === 'single'">
+    <div>
       <p class="jokeSingle">{{ joke.joke }}</p>
-    </div>
-
-    <div *ngIf="joke.type === 'twopart'">
-      <p class="jokeOne">{{ joke.setup }}</p>
-      <p class="jokeSecond">{{ joke.delivery }}</p>
     </div>
   </div>
 
@@ -33,4 +28,6 @@
   </div>
 </section>
 
-<p *ngIf="!joke">Cargando chiste...</p>
+<div class="jokeDiv" *ngIf="!joke">
+  <p  class="jokeSingle">Cargando chiste...</p>
+</div>
