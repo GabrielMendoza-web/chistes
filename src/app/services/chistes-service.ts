@@ -14,7 +14,7 @@ export class ChistesService {
   constructor(private http: HttpClient) {}
 
   enviarCalificacion(calificacion: {
-    id: number;
+    jokeId: number;
     category: string;
     rating: number;
   }): Observable<any> {
