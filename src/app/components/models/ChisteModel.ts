@@ -7,3 +7,12 @@ export interface Joke {
   delivery?: string;
   language: string;
 }
+
+export interface Translation {
+  translations: TranslationElement[];
+}
+
+export interface TranslationElement {
+  detected_source_language: string;
+  text:                     string;
+}

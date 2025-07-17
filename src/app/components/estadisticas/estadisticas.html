@@ -9,13 +9,14 @@
         <div>
         <span
           *ngFor="let star of [1, 2, 3, 4, 5]"
-          [class.filled]="star <= item.average"
+          [class.filled]="star <= Round(item.average)"
           class="star"
           role="button"
           [attr.aria-label]="'Calificar con ' + star + ' estrellas'"
         >
           ★
         </span>
+        <span>({{ parseFloat(item.average).toFixed(2) }})</span>
 
         </div>
       </div>
