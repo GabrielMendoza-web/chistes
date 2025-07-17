@@ -16,11 +16,10 @@ export class Estadisticas {
   constructor(private api: StadisticsService) {}
 
   ngOnInit() {
-    //Ahora solo está con la mockData, en cuanto eduardo cree el back se integrará con esa parte
-    // this.api.getEstadisticas().subscribe({
-    //   next: (data) => {
-    //     this.RankingData = data;
-    //   },
-    // });
+    this.api.getEstadisticas().subscribe({
+      next: (data) => {
+        this.RankingData = data;
+      },
+    });
   }
 }
