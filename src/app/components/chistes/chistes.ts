@@ -60,7 +60,7 @@ export class Chistes {
 
     if (this.joke) {
       const calificacion = {
-        id: this.joke.id,
+        jokeId: this.joke.id,
         rating: this.rating,
         category: this.joke.category,
       };
